@@ -12,9 +12,11 @@
         <div class="row">
             <nav class="nav nav-pills nav-justified col-12">
                 <a class="nav-item nav-link active bg-info m-2 " id="loginActive" href="#">Conectarse</a>
-                <a class="nav-item nav-link active bg-info m-2" id="registerActive" href="#">Nuevo Usuario</a>
+                <a class="nav-item nav-link active bg-primary m-2" id="registerActive" href="#">Nuevo Usuario</a>
                 <a class="nav-item nav-link active bg-danger m-2" id="deleteActive" href="#">Eliminar Usuario</a>
-              </nav>
+                <a class="nav-item nav-link active bg-warning m-2" id="tableActive" href="#">Usuarios activos</a>
+
+            </nav>
                     <div class="col-12 d-none "id="loginToggle">
                         <form id="login-form">
                          <div class="form-group row text-center">
@@ -24,6 +26,7 @@
                             <div class="col-10 m-3">
                                 <input id="password-login" type="password"  placeholder="contraseña">
                             </div>
+                            <div class="col-10" id="errors"></div>
                             <div class="col-10 m-3">
                                 <input id="submit" type="submit" value="enviar">
                             </div>
@@ -51,7 +54,7 @@
                                 <div class="col-10 m-3">
                                     <input id="age-form" type="number" placeholder="edad">
                                 </div>
-                                <div class="col-10" id="errors"></div>
+                                <div class="col-10" id="errors1"></div>
                                 <div class="col-10 m-3 pl-5 pr-5">
                                  <input id="submit" type="submit" value="enviar">
                                 </div>
@@ -65,7 +68,7 @@
                                  <input id="emailDelete-form" type="email" placeholder="email">
                                 </div>
                         
-                                <div class="col-10" id="errors"></div>
+                                <div class="col-10" id="errors2"></div>
                                 <div class="col-10 m-3 pl-5 pr-5">
                                     <input id="submit" type="submit" value="enviar">
                                 </div>

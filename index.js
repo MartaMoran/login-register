@@ -41,24 +41,40 @@ function onlyDeleteActive(){
     });
 }
 onlyDeleteActive();
+function onlyTableActive(){
+    const findTableActive=document.querySelector('#tableActive');
+    findTableActive.addEventListener('click',event=>{
+        findLoginToggle.classList.add('d-none');
+        findRegisterToggle.classList.add('d-none');
+        findDeleteToggle.classList.add('d-none');
+        findTableToggle.classList.remove('d-none');
+
+    })
+}
+onlyTableActive();
 function checkLogin(){
     const findForm=document.querySelector('#login-form');
+    const errors=document.querySelector('#errors');
   
     findForm.addEventListener('submit',event=>{ 
         event.preventDefault();
+        errors.innerHTML='';
         const findemail=document.querySelector('#email-login');
         const findPassword=document.querySelector('#password-login');
         const resultPassword=passwordLogin(findPassword.value);
         const resultmail=emailLogin(findemail.value);
         if (resultmail===undefined){
-           return alert('email no encontrado');
+            errors.insertAdjacentHTML( 'beforeend','<div class="alert alert-danger" role="alert">Usuario no encontrado </div>');
         }
 
         if (resultPassword===undefined){
-           return  findPassword.insertAdjacentHTML('afterend','<p>ERROR CONTRASEÑA</p>');
+            errors.insertAdjacentHTML( 'beforeend','<div class="alert alert-danger" role="alert">Contraseña incorrecta </div>');
+
+        }
+       if (resultPassword && resultmail){
+       errors.insertAdjacentHTML('beforeend', '<div class="alert alert-success" role="alert">Usuario conectado </div>')
         }
 
-        return findForm.insertAdjacentHTML('afterend','<p>Usuario encontrado!</p>');
     });
 }
 checkLogin();
@@ -69,7 +85,7 @@ function newRegister(){
     const emailForm=document.querySelector('#emailRegister-form');
     const passwordForm=document.querySelector('#passwordRegister-form');
     const passwordForm2=document.querySelector('#passwordRegister-form2');
-    const errors=document.querySelector('#errors');
+    const errors=document.querySelector('#errors1');
     const ageForm=document.querySelector('#age-form');
     form.addEventListener('submit',event=>{
         event.preventDefault();
@@ -118,7 +134,7 @@ function delettingUser(){
     const form=document.querySelector('#delete-form');
     const mailForm=document.querySelector('#emailDelete-form');
    
-    const errors=document.querySelector('#errors');
+    const errors=document.querySelector('#errors2');
     form.addEventListener('submit',event=>{
         event.preventDefault();
 
@@ -138,7 +154,6 @@ delettingUser();
 users.forEach(checkList);
 function checkList(item,index){
     const getTable=document.querySelector('#tableBody');
-    const getButton=document.querySelector('#refresh');
     getTable.insertAdjacentHTML('beforeend',`<tr><td>${index}</td><td>${item.name}</td><td>${item.surname}</td><td>${item.email}</td><td>${item.age}</td></tr>`);
 
 }
